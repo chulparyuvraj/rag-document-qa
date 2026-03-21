@@ -79,21 +79,15 @@ class RAGPipeline:
         self._llm_pipeline = self._load_llm()
         logger.info("RAG pipeline ready!")
 
-    def query(self, question: str) -> dict:
+def query(self, question: str) -> dict:
         if self._llm_pipeline is None:
             raise RuntimeError("Call build_index() first.")
-        logger.info(f"Query: {question}")
+        from src.pipeline.prompt_templates import RAG_PROMPT
+        source_docs = self._hybrid_retriever._get_relevant_documents(question)
+        context = "
 
-        # Retrieve relevant docs
-        source_docs = self._hybrid_retriever.invoke(question)
-
-        # Build context string from retrieved chunks
-        context = "\n\n".join([doc.page_content for doc in source_docs])
-
-        # Format prompt manually — no LangChain chain needed
+".join([doc.page_content for doc in source_docs])
         prompt_text = RAG_PROMPT.format(context=context, question=question)
-
-        # Run through HuggingFace pipeline directly
         response = self._llm_pipeline.pipeline(
             prompt_text,
             max_new_tokens=512,
@@ -102,11 +96,7 @@ class RAGPipeline:
             repetition_penalty=1.15,
         )
         answer = response[0]["generated_text"][len(prompt_text):].strip()
-
-        return {
-            "result": answer,
-            "source_documents": source_docs,
-        }
+        return {"result": answer, "source_documents": source_docs}
 
     def get_context(self, question: str) -> List[Document]:
         return self._hybrid_retriever.invoke(question)
