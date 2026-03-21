@@ -1,0 +1,43 @@
+# ── Core RAG ──────────────────────────────────────────────
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-huggingface==0.0.3
+
+# ── Document Ingestion ────────────────────────────────────
+pypdf==4.3.1
+pymupdf==1.24.10
+unstructured==0.15.0
+
+# ── Embeddings & Vector Store ─────────────────────────────
+sentence-transformers==3.1.1
+faiss-cpu==1.8.0
+torch==2.4.0
+transformers==4.44.2
+
+# ── Hybrid Retrieval ──────────────────────────────────────
+rank_bm25==0.2.2
+
+# ── LLM / Fine-tuning ─────────────────────────────────────
+peft==0.12.0
+trl==0.10.1
+bitsandbytes==0.43.3
+accelerate==0.34.2
+datasets==2.21.0
+einops==0.8.0
+
+# ── API ───────────────────────────────────────────────────
+fastapi==0.114.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.8.2
+
+# ── Azure Storage ─────────────────────────────────────────
+azure-storage-blob==12.22.0
+azure-identity==1.18.0
+
+# ── Evaluation & Utilities ────────────────────────────────
+rouge-score==0.1.2
+nltk==3.9.1
+tqdm==4.66.5
+python-dotenv==1.0.1
+loguru==0.7.2

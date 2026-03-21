@@ -1,0 +1,25 @@
+# Environment
+.env
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# Data & Models (too large for git)
+data/papers/*.pdf
+indexes/
+models/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Azure
+*.publishsettings
+
+# Logs
+*.log
+logs/
