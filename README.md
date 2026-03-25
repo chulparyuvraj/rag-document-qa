@@ -137,6 +137,7 @@ curl -X POST http://localhost:8000/query \
 |----------|-------------|
 | `01_RAG_Pipeline_Demo.ipynb` | Full pipeline walkthrough — ingestion → retrieval → QA |
 | `02_QLoRA_Finetuning.ipynb` | Fine-tune Mistral-7B on your domain QA pairs |
+| `RAG_Final_clean_file.ipynb` | Final file which you can run directly in your Notebook |
 
 ---
 
@@ -189,7 +190,7 @@ API will be live at: `https://rag-document-qa.azurewebsites.net`
 ## API Reference
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
+|--------|----------|-------------||
 | GET | `/health` | Liveness check |
 | POST | `/query` | Ask a question |
 | POST | `/upload` | Upload & index a new PDF |
